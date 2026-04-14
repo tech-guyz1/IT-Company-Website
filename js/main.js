@@ -11,11 +11,11 @@ $(document).ready(function(){
 
         if($(window).scrollTop()>35)
         {
-            $('.header').css({'background':'#002e5f','box-shadow':'0 .2rem .5rem rgba(0,0,0,.4)'});
+            $('.header').css({'background':'rgba(0, 46, 95, 0.7)','box-shadow':'0 .2rem .5rem rgba(0,0,0,.4)'});
         }
         else
         {
-            $('.header').css({'background':'none','box-shadow':'none'});
+            $('.header').css({'background':'rgba(255, 255, 255, 0.1)','box-shadow':'0 4px 10px rgba(0, 0, 0, 0.1)'});
         }
     });
 
@@ -73,5 +73,18 @@ $('.accordion-header').click(function(){
     $('.accordion .accordion-header span').text('+');
     $(this).children('span').text('-');
 });
+
+    // Entrance Animations
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.animate-on-scroll').forEach((el) => {
+        observer.observe(el);
+    });
 
 });

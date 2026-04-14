@@ -664,3 +664,52 @@ body{
         font-size: 1.5rem;
     }
 }
+
+/* Animated Text with After/Before Hover */
+h1, h2, h3, h4, h5, h6, p, a, li {
+    position: relative;
+    animation: textGlow 3s infinite alternate;
+}
+
+@keyframes textGlow {
+    0% { text-shadow: 0 0 5px rgba(0, 191, 255, 0.3); }
+    100% { text-shadow: 0 0 15px rgba(0, 191, 255, 0.8); }
+}
+
+h1::before, h1::after,
+h2::before, h2::after,
+h3::before, h3::after,
+h4::before, h4::after,
+h5::before, h5::after,
+h6::before, h6::after,
+p::before, p::after,
+a::before, a::after,
+li::before, li::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    bottom: -5px;
+    background-color: #00bfff;
+    transition: width 0.3s ease;
+}
+
+h1::before, h2::before, h3::before, h4::before, h5::before, h6::before, p::before, a::before, li::before {
+    left: 50%;
+}
+
+h1::after, h2::after, h3::after, h4::after, h5::after, h6::after, p::after, a::after, li::after {
+    right: 50%;
+}
+
+h1:hover::before, h1:hover::after,
+h2:hover::before, h2:hover::after,
+h3:hover::before, h3:hover::after,
+h4:hover::before, h4:hover::after,
+h5:hover::before, h5:hover::after,
+h6:hover::before, h6:hover::after,
+p:hover::before, p:hover::after,
+a:hover::before, a:hover::after,
+li:hover::before, li:hover::after {
+    width: 50%;
+}
