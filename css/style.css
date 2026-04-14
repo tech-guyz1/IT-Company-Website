@@ -105,7 +105,11 @@ body{
     top: 0;
     left: 0;
     z-index: 100;
-    position: fixed;
+    background: rgba(10, 10, 10, 0.55);
+    backdrop-filter: blur(10px);
+    opacity: 0;
+    transform: translateY(-1rem);
+    animation: headerFade 0.7s ease forwards;
 }
 
 .header .logo{
@@ -120,8 +124,8 @@ body{
 
 .header .navbar{
     display: flex;
-    flex: 1;
     justify-content: center;
+    width: min(900px, 100%);
 }
 
 .header .navbar ul{
@@ -129,23 +133,55 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 1.8rem;
+    gap: 2.2rem;
     margin: 0;
     padding: 0;
 }
 
 .header .navbar ul li{
-    margin: 0 1.5rem;
+    margin: 0;
+    opacity: 0;
+    transform: translateY(-10px);
+    animation: navLinkSlide 0.5s ease forwards;
 }
+
+.header .navbar ul li:nth-child(1){ animation-delay: 0.25s; }
+.header .navbar ul li:nth-child(2){ animation-delay: 0.35s; }
+.header .navbar ul li:nth-child(3){ animation-delay: 0.45s; }
+.header .navbar ul li:nth-child(4){ animation-delay: 0.55s; }
+.header .navbar ul li:nth-child(5){ animation-delay: 0.65s; }
+.header .navbar ul li:nth-child(6){ animation-delay: 0.75s; }
+.header .navbar ul li:nth-child(7){ animation-delay: 0.85s; }
+.header .navbar ul li:nth-child(8){ animation-delay: 0.95s; }
 
 .header .navbar ul li a{
     font-size: 2rem;
     color: #fff;
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.25s ease;
+}
+
+.header .navbar ul li a::after{
+    content: '';
+    position: absolute;
+    bottom: -0.35rem;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: #00bfff;
+    transition: width 0.3s ease, left 0.3s ease;
 }
 
 .header .navbar ul li a:hover{
     color: #00bfff;
-    text-decoration: underline;
+    transform: translateY(-2px);
+}
+
+.header .navbar ul li a:hover::after{
+    width: 100%;
+    left: 0;
 }
 
 .header .logo i{
@@ -157,6 +193,28 @@ body{
     cursor: pointer;
     font-size: 3rem;
     display: none;
+}
+
+@keyframes navLinkSlide{
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes headerFade{
+    from {
+        opacity: 0;
+        transform: translateY(-1rem);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .home{
