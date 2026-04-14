@@ -11,11 +11,11 @@ $(document).ready(function(){
 
         if($(window).scrollTop()>35)
         {
-            $('.header').css({'background':'#002e5f','box-shadow':'0 .2rem .5rem rgba(0,0,0,.4)'});
+            $('.header').css({'background':'rgba(6,16,38,0.92)','box-shadow':'0 .2rem .8rem rgba(0,0,0,.35)'});
         }
         else
         {
-            $('.header').css({'background':'none','box-shadow':'none'});
+            $('.header').css({'background':'rgba(6,16,38,0.62)','box-shadow':'0 .2rem .8rem rgba(0,0,0,.18)'});
         }
     });
 
@@ -72,6 +72,21 @@ $('.accordion-header').click(function(){
     $(this).next('.accordion-body').slideDown(500);
     $('.accordion .accordion-header span').text('+');
     $(this).children('span').text('-');
+});
+
+const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.15 });
+
+const revealTargets = document.querySelectorAll('.reveal-on-scroll, .item, .team .row .card, .career, .contact-in, .testimonial-item, .footer .footer-top, .clients img, .contact-map iframe, .counters, .team, .clients, .contact, .career-heading');
+revealTargets.forEach(target => {
+    target.classList.add('reveal');
+    revealObserver.observe(target);
 });
 
 });
