@@ -56,7 +56,6 @@ body, input, textarea, button, select {
     top: 0;
     left: 0;
     z-index: 100;
-    position: fixed;
 }
 
 .header .logo img{
@@ -103,6 +102,7 @@ body, input, textarea, button, select {
     width: 100vw;
     background-image: url(../images/img3.jpg);
     background-size: cover;
+    background-position: center; /* FIX: better image display */
     display: flex;
     align-items: center;
     justify-content: center;
