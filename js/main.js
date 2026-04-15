@@ -11,11 +11,11 @@ $(document).ready(function(){
 
         if($(window).scrollTop()>35)
         {
-            $('.header').css({'background':'rgba(6,16,38,0.92)','box-shadow':'0 .2rem .8rem rgba(0,0,0,.35)'});
+            $('.header').css({'background':'rgba(0, 46, 95, 0.7)','box-shadow':'0 .2rem .5rem rgba(0,0,0,.4)'});
         }
         else
         {
-            $('.header').css({'background':'rgba(6,16,38,0.62)','box-shadow':'0 .2rem .8rem rgba(0,0,0,.18)'});
+            $('.header').css({'background':'rgba(255, 255, 255, 0.1)','box-shadow':'0 4px 10px rgba(0, 0, 0, 0.1)'});
         }
     });
 
@@ -74,19 +74,17 @@ $('.accordion-header').click(function(){
     $(this).children('span').text('-');
 });
 
-const revealObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-        }
-    });
-}, { threshold: 0.15 });
+    // Entrance Animations
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
 
-const revealTargets = document.querySelectorAll('.reveal-on-scroll, .item, .team .row .card, .career, .contact-in, .testimonial-item, .footer .footer-top, .clients img, .contact-map iframe, .counters, .team, .clients, .contact, .career-heading');
-revealTargets.forEach(target => {
-    target.classList.add('reveal');
-    revealObserver.observe(target);
-});
+    document.querySelectorAll('.animate-on-scroll').forEach((el) => {
+        observer.observe(el);
+    });
 
 });
