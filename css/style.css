@@ -26,6 +26,7 @@
 }
 .fade-in {
     opacity: 0;
+    animation-delay: 0.2s;
 }
 .slide-up {
     transform: translateY(30px);
@@ -154,8 +155,9 @@ body{
 }
 
 .header .logo img{
-    width: 130%;
-    height: 3rem;
+     max-width: 130px;
+    width: 100%;
+    height: auto;
     top: 0;
     left: 0;
 }
@@ -400,7 +402,11 @@ body{
 	font-size: 45px;
 	margin: 10px 0;
 }
-
+@media (max-width: 900px){
+    .counters .container{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
 @media (max-width: 700px) {
 	.counters .container {
 		grid-template-columns: repeat(2, 1fr);
@@ -425,6 +431,10 @@ body{
     line-height: 28px;
     text-align: center;
   }
+  .section-title {
+    text-align: center;
+    margin-bottom: 40px;
+}
   .item{
     background: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(10px);
@@ -599,8 +609,8 @@ body{
     position: relative;
     padding: 90px 0;
     text-align: center;
-    margin-top: -10rem;
-    margin-bottom: -10rem;
+    margin-top: -6rem;
+    margin-bottom: -6rem;
 }
 
 .clients .section-header p {
@@ -622,6 +632,18 @@ body{
 .clients img:hover {
     opacity: .5;
 }
+.client-item img {
+    width: 120px;
+    opacity: 0.7;
+    transition: 0.3s;
+    filter: grayscale(100%);
+}
+
+.client-item img:hover {
+    opacity: 1;
+    filter: grayscale(0%);
+    transform: scale(1.1);
+}
 
 .clients .owl-nav,
 .clients .owl-dots {
@@ -641,6 +663,13 @@ body{
 .clients .owl-dot.active {
     background-color: #4F84C4;
 }    
+
+@media (max-width: 768px){
+    .clients {
+        margin-top: -4rem;
+        margin-bottom: -4rem;
+    }
+}
 
 .team{
     min-width: 100vw;
@@ -926,7 +955,20 @@ body{
 			color: #aaa;
             font-size: 1.5rem;
 		}
+@media (max-width: 768px){
+       .contact-form-txt,
+       .contact-form-email,
+       .contact-form-phone,
+       .contact-form-txtarea {
+        margin-left: 0;
+        width: 100%;
+       }
 
+    .contact-form-btn {
+        width: 100%;
+        margin-left: 0;
+    }
+}
         .footer {
             position: relative;
             padding: 0 0 30px 0;
@@ -1158,6 +1200,12 @@ body{
             margin-left: 1rem;
             margin-right: 2rem;
         }
+
+@media (max-width: 1000px){
+    .faq .row {
+        gap: 2rem;
+    }
+}
         
 @media (max-width: 1200px){
     .faq{
